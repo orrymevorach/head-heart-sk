@@ -1,0 +1,155 @@
+{% if section.settings.code != blank %}
+{{'jquery-3.0.0.min.js' | asset_url | script_tag }}
+<div class="grid grid--uniform" data-section-id="{{ section.id }}" data-section-type="custom-html-section">
+  <div class="grid__item {{ block_width }}">
+    <div class="page-width new-page-width">
+
+    {{'featured-items-slider.css' | asset_url | stylesheet_tag }}
+
+    <h1 style="text-align:center">Featured Items</h1>
+      
+	<div class="featured-container-large">
+        <div class="featured-container-small" >
+
+          <div>  
+            <a href="https://headandheartsk.com/collections/snapbacks/products/h-h-snapback-2?variant=14951550320709"><img src="{{ 'featured_1.png' | asset_img_url: '500x' }}" class="image" />
+              <p class="featured-text">Snapback In Pink</p></a>
+          </div>
+          <div>  
+            <a href="https://headandheartsk.com/collections/sweaters-hoodies/products/h-h-unisex-hoodie-original?variant=14521241993285"><img src="{{ 'featured_2.png' | asset_img_url: '500x' }}" class="image" />
+              <p class="featured-text">Hoodie In Navy Blue</p></a>
+          </div>
+          <div>  
+            <a href="https://headandheartsk.com/collections/long-sleeves-and-3-4-sleeves/products/h-h-unisex-long-sleeve?variant=14465258094661"><img src="{{ 'featured_3.png' | asset_img_url: '500x' }}" class="image" />
+              <p class="featured-text">Long Sleeve In Athletic Heather</p></a>
+          </div>
+          <div>  
+            <a href="https://headandheartsk.com/collections/babies/products/h-h-infant-one-piece?variant=14798921171013"><img src="{{ 'featured_4.png' | asset_img_url: '500x' }}" class="image" />
+              <p class="featured-text">Infant Onepiece In Heather Maroon</p></a>
+          </div>
+          <div>  
+            <a href="https://headandheartsk.com/collections/tees-and-tanks/products/h-h-unisex-tank?variant=14393406914629"><img src="{{ 'featured_5.png' | asset_img_url: '500x' }}" class="image" />
+              <p class="featured-text">Tank In Black</p></a>
+          </div>
+          <div>  
+            <a href="https://headandheartsk.com/collections/tees-and-tanks/products/h-h-unisex-tank?variant=14393406914629"><img src="{{ 'featured_6.png' | asset_img_url: '500x' }}" class="image" />
+              <p class="featured-text">3/4 Sleeve In Tahiti Blue</p></a>
+          </div>
+        </div>
+      </div>
+      
+      <script>
+        $(function(){
+          var slider_index = 1;
+          var pos_pct = 0;
+          var windowWidth = $(window).width()
+          
+          setInterval( function slider() {
+
+            pos_pct++;
+            if (windowWidth >= 1100 && pos_pct == 1) {
+              pos_pct = 3
+            }
+            else if (windowWidth >= 1100 && pos_pct > 3) {
+              pos_pct = 0
+            }                        
+          	else if (windowWidth > 500 && windowWidth < 1100 && pos_pct == 1) {
+              pos_pct = 2   
+            }
+
+            else if (windowWidth > 500 && windowWidth < 1100 && pos_pct == 3) {
+              pos_pct = 4   
+            }
+            else if (windowWidth > 500 && windowWidth < 1100 && pos_pct > 4) {
+              pos_pct = 0   
+            }
+            else if (windowWidth <= 500 && pos_pct > 5) {
+              pos_pct = 0;
+            }
+            
+          $('.image').css({'transform': 'translatex(-' + pos_pct + '00%)', 'transition': '0.3s'})
+          $('.featured-text').css({'transform': 'translatex(-' + pos_pct + '00%)', 'transition': '0.3s'})
+
+          }, 3500)
+
+        });
+        
+        
+        
+      </script>
+
+
+      
+
+
+
+      	
+
+
+    </div>
+  </div>
+</div>
+{% endif %}
+
+
+
+{% schema %}
+{
+  "name": {
+    "de": "Benutzerdefiniertes HTML",
+    "en": "Custom HTML",
+    "es": "HTML personalizado",
+    "fr": "Code HTML personnalisé",
+    "it": "HTML personalizzato",
+    "ja": "HTMLをカスタムする",
+    "pt-BR": "HTML personalizado"
+  },
+  "class": "index-section custom-html-section",
+  "settings": [
+    {
+      "type": "html",
+      "id": "code",
+      "label": {
+        "de": "Benutzerdefiniertes HTML",
+        "en": "Custom HTML",
+        "es": "HTML personalizado",
+        "fr": "Code HTML personnalisé",
+        "it": "HTML personalizzato",
+        "ja": "HTMLをカスタムする",
+        "pt-BR": "HTML personalizado"
+      },
+      "default": {
+        "de": "<div style='text-align:center;'><h2>Formatieren Sie Ihren Text mit HTML, damit er leichter lesbar ist.</h2>Mit diesem Text können Sie Ihre Kunden über Ihre Marke informieren.</div>",
+        "en": "<div style='text-align:center;'><h2>Use HTML to format your text so it can be easily read.</h2>This text can be used to share information about your brand with customers.</div>",
+        "es": "<div style='text-align:center;'><h2>Usa HTML para formatear tu texto para que se pueda leer fácilmente</h2>. Este texto se puede usar para compartir información sobre tu marca con los clientes.</div>",
+        "fr": "<div style='text-align:center;'><h2>Utilisez le code HTML pour formater votre texte afin qu'il puisse être facilement lu.</h2>Vous pouvez utiliser ce texte pour partager des informations sur votre marque avec les clients.</div>",
+        "it": "<div style='text-align:center;'><h2>Utilizza l'HTML per formattare il tuo testo così che sia facilmente leggibile.</h2>Questo testo può essere usato per condividere le informazioni sul tuo brand con i clienti.</div>",
+        "ja": "<div style='text-align:center;'><h2>テキストが読みやすくなるように、HTMLを使用して書式設定します。</h2>このテキストは、あなたのブランドに関する情報をお客様と共有するために使用できます。</div>",
+        "pt-BR": "<div style='text-align:center;'><h2>Use HTML para formatar seu texto, assim ele pode ser lido com facilidade.</h2> Esse texto pode ser usado para compartilhar informações sobre sua marca com os clientes.</div>"
+      }
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "de": "Benutzerdefiniertes HTML",
+        "en": "Custom HTML",
+        "es": "HTML personalizado",
+        "fr": "Code HTML personnalisé",
+        "it": "HTML personalizzato",
+        "ja": "HTMLをカスタムする",
+        "pt-BR": "HTML personalizado"
+      },
+      "category": {
+        "de": "Advanced",
+        "en": "Advanced",
+        "es": "Avanzado",
+        "fr": "Advanced",
+        "it": "Advanced",
+        "ja": "高度",
+        "pt-BR": "Advanced"
+      }
+    }
+  ]
+}
+{% endschema %}
